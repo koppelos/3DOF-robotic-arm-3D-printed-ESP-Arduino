@@ -1,28 +1,13 @@
-Tematem projektu jest robotyczne ramię wykonane w technologii wydruku 3D. 
+The subject of the project is a robotic arm made using 3D printing technology.
 
-Projekt zakłada zamodelowanie w wybranym środowisku CAD modeli w rozszerzeniu .stl, elementów robotycznego ramienia. Następnie ich wydruk oraz montaż.
-Robot kontrolowany jest za pomocą mikrokontrolera ESP32, a zadania sterujące zostały nadawane na mikrokontroler poprzez komunikację USB to UART, przy pomocy sterownika CP210x i oprogramowanie programistyczne Arduino IDE. W strukturze całej aplikacji do wykonywania przemieszczenia zostały wykorzostane: 
--silniki krokowe 28BYJ-48
--serwomechanizm SG90 (obsługujący chwytak)
--przełączniki krańcowe WK621
-Komunikacja elementów elektronicznych realizowana jest za pomocą przewodów połączeniowych. Zasilanie obsługujące robota jest zasilaniem sieciowym 230V.
+The project involves modelling the components of the robotic arm in the chosen CAD environment with a .stl extension. They are then printed and assembled. The robot is controlled using an ESP32 microcontroller, and control tasks were broadcast to the microcontroller via USB to UART communication, using a CP210x controller and Arduino IDE programming software. In the structure of the whole application, the following were used to perform the displacement: -28BYJ-48 stepper motors -Servo-mechanism SG90 (which operates the gripper) -WK621 limit switches Communication of the electronic components is carried out via connection cables. The power supply operating the robot is a 230V mains supply.
 
-Założeniem bazowym projektu jest możliwość symulacji działania ramienia o 3 stopniach swobody. Tak aby poprzez obserwacje układu mniejszczego możnaby było zrealizować aplikację w większej skali.
-W przypadku sterowania robotem zrealizowane zostały dwa rodzaje kontroli ramienia. Są to kontrola manualna oraz programowa.
-W przypadku kontroli manualnej zotał wykorzystany wbudowany w ESP32 moduł Bluetooth umożliwiający komunikację platformy z zewnętrznym kontrolerem posiadającym moduł Bluetooth - w tym przypadku DualShock3.
-Aby komunikacja została nawiązana oraz poszczególne zadania mogły zostać przypisane do konkretnych przycisków kontrolera, potrzebne jest wykorzystanie dedykowanej biblioteki Ps3Controller. Komunikacja Bluetooth nawiązywana jest na podstawie adresu MAC urządzenia DualShock3. Odkrycie lub zmiana adresu fizycznego urządzenia możliwe jest przy wykorzystaniu oprogramowania SixAxisPairTool.
+The underlying assumption of the project is to be able to simulate the operation of an arm with 3 degrees of freedom. So that by observing a smaller scale system, a larger scale application could be realised. In the case of robot control, two types of arm control were realised. These are manual and software control. In the case of manual control, the ESP32's built-in Bluetooth module was used to allow the platform to communicate with an external controller with a Bluetooth module - in this case the DualShock3. In order for communication to be established and individual tasks to be assigned to specific controller buttons, it is necessary to use the dedicated Ps3Controller library. Bluetooth communication is established based on the MAC address of the DualShock3 device. Discovering or changing the physical address of the device is possible using the SixAxisPairTool software.
 
+In the case of software control, the movement of the arm to the selected position was realised using an inverse kinematics task. As part of the application development, a simple kinematics task was also tested. Both straight and inverse kinematics tasks were solved using a geometrical method based on the actual dimensions of the printed arms.
 
-W przypadku sterowania programowego przemieszczenie ramienia do wybranej pozycji zostało zrealizowane wykorzystując zadanie kinematyki odwrotnej.
-W ramach budowy aplikacji przetestowano również zadanie kinematyki prostej. W przypadku rozwiązaywania zadań kinematyki prostej jak i odwrotnej zostały wykorzystana metoda geometryczna, opierająca się na rzeczywistych wymiarach wydrukowanych ramion.
+The robot was placed on a stable platform and which exceeded the reach of its total workspace in size, this was necessary in order to correctly perform arm movements. The robot application is equipped with a controlled gripper that allows the handling of low-weight objects. A programme was therefore written to move the given object from its initial position (POS1) to its final position (POS2). The description of the object in space was realised by defining the position of the object in Cartesian space operating on three space vectors (x,y,z). The calculation of the inverse kinematics tasks for the given values required starting the displacement according to the defined start position to the given positions. For this purpose, limit switches were used, which are responsible for correcting the arm alignment to this start position.
 
-Robot został umieszczony na stabilnej platformie a która rozmiarem przekraczała zasięg jego całkowitej przestrzeni roboczej, było to konieczne w celu poprawnego wykonania przemieszczeń ramienia.
-Aplikacja robotyczna wyposażona jest w kontrolowany chwytak umożliwiający przenoszenie przedmiotów niskiej wagi. Został więc napisany program umożliwiający przemieszczenie danego z obiektu z pozycji początkowej (POS1) do pozycji końcowej (POS2).
-Opis obiektu w przestrzeni został zrealizowany poprzez określenie pozycji obiektu w przestrzeni kartezjańskiej operując na trzech wektorach przestrzennych (x,y,z).
-Wyliczenie zadań kinematyki odwrotnej dla zadanych wartości wymagało rozpoczęcie przemieszczenia według zdefiniowanej pozycji startowej do zadanych pozycji. W tym celu wykorzystane zostały przełączniki krańcowe które odpowiedzialne są za skorygowanie ustawienia ramienia do tejże pozycji startowej.
+The arm movements were realised using stepper motors; the corresponding values calculated by the kinematics tasks were transformed into the selected number of steps and the direction of the motor shaft travel. The AccelStepper and Stepper libraries were used to implement these tasks. The servo is controlled via the standard Servo library.
 
-Przemieszczenia ramion zostały zrealizowane przy wykorzystaniu silników krokowych, odpowiednie wartości wyliczane poprzez zadania kinematyki były transformowane na wybraną ilość kroków oraz kierunek przesunięca wała silnika.
-W celu realizacji tych zadań zostały wykorzystane biblioteki AccelStepper oraz Stepper. Serwomechanizm kontrolowany jest poprzez standardową bibliotekę Servo.
-
-W celu testu zakresu przestrzeni roboczej został zrealizowany skrypt wizualizacyjny w oprogramowaniu Matlab, ukazujący możliwe konfiguracje przemieszczeń zarówno w płaszczyźnie 2D oraz 3D.
- 
+In order to test the scope of the workspace, a visualisation script was realised in Matlab, showing possible displacement configurations in both 2D and 3D planes.
