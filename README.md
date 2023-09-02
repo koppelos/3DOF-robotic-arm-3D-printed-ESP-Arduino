@@ -16,3 +16,6 @@ In order to test the scope of the workspace, a visualisation script was realised
 Electronic modules connection scheme
 
 
+![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/20842ebe-4304-46fe-b895-7d75f704a5c2)
+3D workspace of manipulator - Matlab R2023 simulation
+
