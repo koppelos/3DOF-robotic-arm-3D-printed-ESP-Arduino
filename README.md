@@ -19,3 +19,5 @@ Electronic modules connection scheme
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/20842ebe-4304-46fe-b895-7d75f704a5c2)
 3D workspace of manipulator - Matlab R2023 simulation
 
+![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/07b3d3f9-d116-4241-a635-e5f2ddfdb909)
+Side and up view of the robotic arm with angles description used for calculating FK and IK
