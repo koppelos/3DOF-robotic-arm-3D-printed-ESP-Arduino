@@ -11,3 +11,8 @@ The robot was placed on a stable platform and which exceeded the reach of its to
 The arm movements were realised using stepper motors; the corresponding values calculated by the kinematics tasks were transformed into the selected number of steps and the direction of the motor shaft travel. The AccelStepper and Stepper libraries were used to implement these tasks. The servo is controlled via the standard Servo library.
 
 In order to test the scope of the workspace, a visualisation script was realised in Matlab, showing possible displacement configurations in both 2D and 3D planes.
+
+![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/038ef9a7-d98c-44e9-8a94-3e424606ad71)
+Electronic modules connection scheme
+
+
