@@ -13,13 +13,16 @@ The arm movements were realised using stepper motors; the corresponding values c
 In order to test the scope of the workspace, a visualisation script was realised in Matlab, showing possible displacement configurations in both 2D and 3D planes.
 
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/038ef9a7-d98c-44e9-8a94-3e424606ad71)
+
 Electronic modules connection scheme
 
 
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/20842ebe-4304-46fe-b895-7d75f704a5c2)
+
 3D workspace of manipulator - Matlab R2023 simulation
 
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/07b3d3f9-d116-4241-a635-e5f2ddfdb909)
+
 Side and up view of the robotic arm with angles description used for calculating FK and IK
 
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/e1130655-7abe-46e5-ac73-2a4c24d12e19)
