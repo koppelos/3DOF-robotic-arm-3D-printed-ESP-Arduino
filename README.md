@@ -26,3 +26,5 @@ Electronic modules connection scheme
 Side and up view of the robotic arm with angles description used for calculating FK and IK
 
 ![image](https://github.com/koppelos/3DOF-robotic-arm-3D-printed-ESP-Arduino/assets/48089897/e1130655-7abe-46e5-ac73-2a4c24d12e19)
+
+Angles decription and method of setting the Px,Py,Pz coordinates 
