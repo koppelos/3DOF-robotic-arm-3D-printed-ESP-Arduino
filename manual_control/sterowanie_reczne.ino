@@ -30,7 +30,7 @@ void setup()
     servo.attach(25);
     Serial.begin(115200);
     Ps3.begin("44:19:1a:03:04:05");
-    Serial.println("Kontroler skomunikowany poprawnie.");
+    Serial.println("Controller connected successfully.");
 
     stepper1.setSpeed(8);
     stepper2.setSpeed(8);
