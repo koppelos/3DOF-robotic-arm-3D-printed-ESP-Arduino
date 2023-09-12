@@ -3,8 +3,6 @@
 #include <math.h>
 #include <stdio.h>
 
-//Kinematyka odwrotna, biblioteka stepper
-
 Servo servo;
 
 #define IN11 15
@@ -33,6 +31,7 @@ float Px = -80.0;
 float Py = -80.0;          
 float Pz = 5.0;
 
+//inverse kinematics
 float Beta = atan2(Py,Px) * (180/3.1415);
 float Beta_cw1 = atan2(Px,Py)*(180/3.1415);
 float l = sqrt(Px*Px + Py*Py);
@@ -41,6 +40,7 @@ float h = sqrt(l*l + Pz*Pz);
 float phi = atan(Pz/l)* (180/3.1415);
 float theta = acos((h/2)/90) * (180 / 3.1415);
 
+//IK apply for the starting position of the robotic arm
 float Q1 = phi + theta;
 float a2 = phi - theta;
 float delta = 180.0 - (90.0+theta);
