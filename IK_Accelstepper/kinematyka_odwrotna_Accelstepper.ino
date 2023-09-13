@@ -3,10 +3,8 @@
 #include <math.h>
 #include <stdio.h>
 
-//Kinematyka odwrtona, biblioteka stepper
-
 Servo servo;
-
+//define pins used by microcontroller for 3 stepper motors
 #define IN11 15
 #define IN21 2
 #define IN31 4
@@ -22,13 +20,13 @@ Servo servo;
 #define IN33 21
 #define IN43 19
 
-const int steps = 2048;
+const int steps = 2048; //define full rotation steps number for BYJ-48
 
 AccelStepper stepper1(AccelStepper::FULL4WIRE, IN12, IN32, IN22, IN42);
 AccelStepper stepper2(AccelStepper::FULL4WIRE, IN11, IN31, IN21, IN41);
 AccelStepper stepper3(AccelStepper::FULL4WIRE, IN13, IN33, IN23, IN43);
 
-
+//set of desired X,Y,Z coordinates
 float floatFromPCx = 50.0;    
 float floatFromPCy = 50.0;          
 float floatFromPCz = 50.0;
