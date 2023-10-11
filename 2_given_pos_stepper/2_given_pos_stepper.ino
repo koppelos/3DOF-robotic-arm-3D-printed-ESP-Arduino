@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 Servo servo;
-
+//predefine ESP32 pins with 28BYJ-48 stepper motors, 3 stepper motors in use
 #define IN11 15
 #define IN21 2
 #define IN31 4
@@ -21,23 +21,25 @@ Servo servo;
 #define IN43 19
 
 
-const int steps = 2048;
-
-Stepper stepper1(steps, IN12, IN32, IN22, IN42);
+const int steps = 2048; //number of steps stepper motor definition
+//steppers define
+Stepper stepper1(steps, IN12, IN32, IN22, IN42); 
 Stepper stepper2(steps, IN11, IN31, IN21, IN41);
 Stepper stepper3(steps, IN13, IN33, IN23, IN43);
 
+//the first carthesian desirable coordinates (POS1)
 float floatFromPCx = -80.0;
 float floatFromPCy = 80.0;     
 float floatFromPCz = 80.0;
 
+//the second carthesian desirabled cordinates (POS2)
 float x2 = 70.0 ;
 float y2 = 80.0;
 float z2 = 50.0;
 
 
 
-float b = atan2(floatFromPCy,floatFromPCx) * (180/3.1415);   //why atan2
+float b = atan2(floatFromPCy,floatFromPCx) * (180/3.1415);   
 float b_cw1 = atan2(floatFromPCx,floatFromPCy)*(180/3.1415);
 float l = sqrt(floatFromPCx*floatFromPCx + floatFromPCy*floatFromPCy);
 float h = sqrt(l*l + floatFromPCz*floatFromPCz);
@@ -47,20 +49,20 @@ float theta = acos((h/2)/90) * (180 / 3.1415);
 
 float a1 = phi + theta;  //angle for first part of arm
 float a2 = phi - theta;  //angle for second part of arm
-//float G = sin((h/2)/90)*(180/3.1415);
+
 float ga = 180.0 - (90.0+theta);
-float be = 180.0-(2*ga); //in degrees
+float be = 180.0-(2*ga); //the angle presented in degrees, not radians
 
-float ang1 = (b * 5.66)-36; //46   ta poprawka dziala tylko do tylu a nie do przodu
-float ang1_cw1 = (b_cw1 * 5.66)-36;
-float ang2 = ((90 - a1) * 5.66)-20;//28
-float ang3 = (be * 5.66)+70;//+110
+float ang1 = (b * 5.66)-36; //-36 is the correction for the shift resulting from the structure of the arm
+float ang1_cw1 = (b_cw1 * 5.66)-36; //-36 is the shift correction
+float ang2 = ((90 - a1) * 5.66)-20; //-20 is the shift correction
+float ang3 = (be * 5.66)+70;// +70 is the shift correction
 
-float cw_offset = 90*5.66;
+float cw_offset = 90*5.66; //offset deg2rad
 
-float step1_cw2 = -(ang1-cw_offset);  //wartosc ang1 dla cw2
-float step1_cw3 = -(ang1+cw_offset); // wartsoc ang1 dla cw3
-float step1_cw4 = -(ang1+cw_offset); // wartosc and1 dla cw4
+float step1_cw2 = -(ang1-cw_offset); //value ang1 for cw2
+float step1_cw3 = -(ang1+cw_offset); //value ang1 for cw3
+float step1_cw4 = -(ang1+cw_offset); //value ang1 for cw4
 
 
 
