@@ -42,16 +42,16 @@ float theta = acos((h/2)/90) * (180 / 3.1415);
 
 float a1 = phi + theta;  //angle for first part of arm
 float a2 = phi - theta;  //angle for second part of arm
-//float G = sin((h/2)/90)*(180/3.1415);
+
 float ga = 180.0 - (90.0+theta);
 float be = 180.0-(2*ga); //in degrees
 
 
 
-float ang1 = (b * 5.66)-36; //46   ta poprawka dziala tylko do tylu a nie do przodu
+float ang1 = (b * 5.66)-36; //angle times gear ratio(5.66) -36 arm shift fix
 float ang1_cw1 = (b_cw1 * 5.66)-36;
-float pom_sil2 = ((90 - a1) * 5.66)-20;//28
-float pom_sil3_v2 = (be * 5.66)+70;//+110
+float pom_sil2 = ((90 - a1) * 5.66)-20;//-20 arm shift 
+float pom_sil3_v2 = (be * 5.66)+70;//+70 arm shift
 
 float cw_offset = 90*5.66;
 
