@@ -55,7 +55,7 @@ float pom_sil3_v2 = (be * 5.66)+70;//+70 arm shift
 
 float cw_offset = 90*5.66;
 
-
+//function controlling movement in the first quarter of carthesian plate
 void cw1(float b, float a1, float be)
 {     
     stepper1.moveTo(ang1_cw1);
@@ -73,7 +73,7 @@ void cw1(float b, float a1, float be)
     stepper2.run();
     stepper3.run();
 }
-void cw1_back(float b_cw1, float a1, float be){
+void cw1_back(float b_cw1, float a1, float be){ //function controlling return movement in first quarter carthesian plate
    
     stepper3.moveTo(pom_sil3_v2);
     stepper2.moveTo(-pom_sil2);
@@ -115,11 +115,7 @@ void cw3(float b, float a1, float be)
     stepper1.moveTo(-(ang1+cw_offset));
     stepper2.moveTo(-pom_sil2);
     stepper3.moveTo(pom_sil3_v2);
-   // delay(4000);
 
-    //stepper3.moveTo(-pom_sil3_v2);
-   // stepper2.moveTo(pom_sil2);
-    //stepper1.moveTo((ang1+cw_offset));
     
     stepper1.setMaxSpeed(300.0);
     stepper1.setAcceleration(100.0);
@@ -132,14 +128,10 @@ void cw3(float b, float a1, float be)
     stepper3.run();
 }
 void cw4(float b, float a1, float be)
-{   //delay(1000);
+{   
     stepper1.moveTo(-(ang1+cw_offset));
     stepper2.moveTo(-pom_sil2);
     stepper3.moveTo(pom_sil3_v2);
-    //delay(4000);
-    //stepper3.moveTo(-pom_sil3_v2);
-    //stepper2.moveTo(pom_sil2);
-    //stepper1.moveTo(ang1+cw_offset);
     stepper1.setMaxSpeed(300.0);
     stepper1.setAcceleration(100.0);
     stepper2.setMaxSpeed(300.0);
@@ -153,7 +145,7 @@ void cw4(float b, float a1, float be)
 void setup()
 {   
     
-    servo.attach(25);
+    servo.attach(25); //servo attachment to pin25 of ESP32
     Serial.begin(9600);
     Serial.println("Enter data in this style   <HelloWorld, 12, 24.7>  ");
     Serial.println();
